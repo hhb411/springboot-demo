@@ -4,6 +4,11 @@ ds1, ds2, ds3 能否动态加入进来，不用每次都改代码
 filter
 interceptor
 
+打包：
+按springboot的jar包：static, templates 都会打到classes下。如果用jsp的app启动，也访问不了jsp，但其它请求可以访问
+按支持jsp的war包：注意，url根变成了war包名，而context-path不起作用了！
+
+
 事务：
 能支持事务，但用了@Transaction就无法切库（只能用默认数据源）。因为解释@Transaction时spring就要开事务，就要设置好数据源，但等到自己切库后，spring并不会重新再获取一次数据源
 也就是说，切库要在@Transactional外面先切，一旦进入@Transactional，再切库就没作用了。
