@@ -1,0 +1,41 @@
+动态数据源：
+ds1, ds2, ds3 能否动态加入进来，不用每次都改代码
+
+filter
+interceptor
+
+事务：
+能支持事务，但用了@Transaction就无法切库（只能用默认数据源）。因为解释@Transaction时spring就要开事务，就要设置好数据源，但等到自己切库后，spring并不会重新再获取一次数据源
+也就是说，切库要在@Transactional外面先切，一旦进入@Transactional，再切库就没作用了。
+那么，就要再定义一个方法并注解Transctional，同一个类内部调用的方法，不会被事务拦截器拦截到，所以必须放在另外一个类里，并注入进来。
+
+
+
+【引入xml】
+@Configuration
+@ImportResource(locations={"classpath:application-bean.xml"})
+
+【jsp】
+SpringBoot 添加对JSP的支持（附常见坑点）
+https://www.jianshu.com/p/de939365c472
+
+【事务】
+https://www.cnblogs.com/xingzc/p/6029483.html
+SpringBoot 快速开启事务（附常见坑点）
+https://www.jianshu.com/p/380a9d980ca5
+
+【intercepter】
+springboot过滤器和拦截器的实现和区别
+https://segmentfault.com/a/1190000012072060
+
+SpringBoot如何添加拦截器
+https://blog.csdn.net/tracyclock/article/details/78672711
+
+【filter】
+springboot中filter的用法
+https://www.cnblogs.com/ll409546297/p/7422833.html
+
+【aop】
+引入starter-aop即可使用，不需要其它配置。
+Spring Boot +Spring AOP 可插拔式日志思路
+https://blog.csdn.net/u010820702/article/details/62212981
