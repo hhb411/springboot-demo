@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.Assert.*;
 
 /**
- * Created by Administrator on 2018/8/19.
+ * Created by hb on 2018/8/19.
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -31,9 +31,10 @@ public class UserServiceImplTest {
     public void update() throws Exception {
     }
 
+    // 用于测试事务和动态数据源
     @Test
     public void demoUpdate() throws Exception {
-        DataSourceContextHolder.setDB("ds2");
+        DataSourceContextHolder.setDB("ds2"); // 此处(在 @Transactional之前)切库有效
         userServiceImpl.demoUpdate();
     }
 

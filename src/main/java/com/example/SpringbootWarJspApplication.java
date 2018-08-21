@@ -8,21 +8,21 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /**
- * main entry class with jsp supporting
+ * 启动类(支持jsp)
  *
- * Created by Administrator on 2018/8/19.
+ * Created by hb on 2018/8/19.
  */
 @SpringBootApplication
 @ServletComponentScan
-@MapperScan("com.example.mapper")
 public class SpringbootWarJspApplication extends SpringBootServletInitializer {
 
     public static void main(String[] args) {
         SpringApplication.run(SpringbootWarJspApplication.class, args);
     }
 
-    @Override
-    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
-        return builder.sources(SpringbootWarJspApplication.class);
-    }
+//    @Override
+//    protected SpringApplicationBuilder configure(SpringApplicationBuilder builder) {
+//        return builder.sources(SpringbootWarJspApplication.class);
+//    }
+
 }

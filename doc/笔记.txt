@@ -1,8 +1,18 @@
 动态数据源：
-ds1, ds2, ds3 能否动态加入进来，不用每次都改代码
+TODO: ds1, ds2, ds3 能否动态加入进来，不用每次都改代码
 
-filter
-interceptor
+TODO：看springboot工程目录实践
+
+
+不同的Configuration类之间的引用：
+
+JavaConfig与xml的对比：
+JavaConfig对实际工作没什么明显优势：
+xml类型不安全——这个劣势已经由IDE弥补了；
+javaconfig更灵活——这个没价值，配置的地方本就不应该写逻辑，能写逻辑反而容易乱，不能写逻辑才好(xml)；
+java程序员更习惯用java写配置——java程序员可能更熟悉xml配置
+javaconfig不减少工作量；
+
 
 打包：
 按springboot的jar包：static, templates 都会打到classes下。如果用jsp的app启动，也访问不了jsp，但其它请求可以访问
@@ -10,15 +20,16 @@ interceptor
 
 
 事务：
-能支持事务，但用了@Transaction就无法切库（只能用默认数据源）。因为解释@Transaction时spring就要开事务，就要设置好数据源，但等到自己切库后，spring并不会重新再获取一次数据源
-也就是说，切库要在@Transactional外面先切，一旦进入@Transactional，再切库就没作用了。
-那么，就要再定义一个方法并注解Transctional，同一个类内部调用的方法，不会被事务拦截器拦截到，所以必须放在另外一个类里，并注入进来。
+能支持事务，但用了@Transactional就无法切库（只能用默认数据源）。因为解释@Transactional时spring就要开事务，就要获取数据源，但等到自己切库后，spring并不会重新再获取一次数据源
+也就是说，一旦进入@Transactional，再切库就没作用了，切库要在@Transactional外面进行。
+那么，就要再定义一个方法并注解Transctional——但是同一个类内部调用的方法，不会被事务拦截器拦截到，所以这个方法必须放在另外一个类里，并注入进来。
 
 
 
 【引入xml】
 @Configuration
 @ImportResource(locations={"classpath:application-bean.xml"})
+
 
 【jsp】
 SpringBoot 添加对JSP的支持（附常见坑点）

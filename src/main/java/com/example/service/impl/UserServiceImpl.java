@@ -11,7 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/8/19.
+ * Created by hb on 2018/8/19.
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService {
         userMapper.update(user);
     }
 
-    // 用于测试事务
+    // 用于测试事务和动态数据源
     @Override
     @Transactional(rollbackFor = {Exception.class}) // @Transactional 有效
     public void demoUpdate() throws Exception {
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
     @Override
 //    @Transactional(rollbackFor = {Exception.class}) // 此处@Transactional无效, 因为在同一个类中调用方法, 被调用的方法不会被拦截到。除非把此方法放到另一个类里, 并注入进来才行。
     public void demoDoUpdate() throws Exception {
-        UserDomain user = userMapper.getOne(2L);
+        UserDomain user = userMapper.getOne(1L);
         user.setPassword(user.getPassword() + "(1)");
         userMapper.update(user);
         user.setPassword(user.getPassword() + "(2)");

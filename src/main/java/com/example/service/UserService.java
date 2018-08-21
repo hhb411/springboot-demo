@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/8/19.
+ * Created by hb on 2018/8/19.
  */
 public interface UserService {
     public List<UserDomain> getAll();

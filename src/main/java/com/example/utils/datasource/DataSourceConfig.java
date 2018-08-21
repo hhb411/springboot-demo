@@ -3,6 +3,7 @@ package com.example.utils.datasource;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
@@ -17,9 +18,10 @@ import java.util.Map;
 
 /**
  * 数据源配置信息
- * Created by Administrator on 2018/8/18.
+ * Created by hb on 2018/8/18.
  */
 @Configuration
+@MapperScan("com.example.mapper")
 public class DataSourceConfig {
 
     // 载入properties
@@ -47,12 +49,10 @@ public class DataSourceConfig {
         Map<Object, Object> dsMap = new HashMap(5);
         dsMap.put("ds1", dataSource1());
         dsMap.put("ds2", dataSource2());
-
         dynamicDataSource.setTargetDataSources(dsMap);
         // 默认数据源
         dynamicDataSource.setDefaultTargetDataSource(
                 dsMap.get(DataSourceContextHolder.DEFAULT_DS));
-
         return dynamicDataSource;
     }
 

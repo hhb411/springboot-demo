@@ -1,7 +1,7 @@
 package com.example.domain;
 
 /**
- * Created by Administrator on 2018/8/18.
+ * Created by hb on 2018/8/18.
  */
 
 import java.io.Serializable;

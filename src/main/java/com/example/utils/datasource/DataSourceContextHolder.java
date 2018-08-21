@@ -6,7 +6,7 @@ import org.slf4j.LoggerFactory;
 /**
  * 保存当前线程使用的数据源名称
  *
- * Created by Administrator on 2018/8/18.
+ * Created by hb on 2018/8/18.
  */
 public class DataSourceContextHolder {
     private static final Logger log = LoggerFactory.getLogger(DataSourceContextHolder.class);

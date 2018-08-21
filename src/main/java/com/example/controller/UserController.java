@@ -4,6 +4,7 @@ import com.example.domain.UserDomain;
 import com.example.mapper.UserMapper;
 import com.example.utils.datasource.DataSourceContextHolder;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,18 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 /**
- * Created by Administrator on 2018/8/18.
+ * Created by hb on 2018/8/18.
  */
 @Controller
+@RequestMapping("user")
 public class UserController {
 
     @Autowired
     private UserMapper userMapper;
-
-    @RequestMapping("user")
-    public String user() {
-        return "user";
-    }
 
     @RequestMapping("/getUsers")
     @ResponseBody
